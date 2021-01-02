@@ -1,9 +1,31 @@
 import React from 'react';
+import Products from '../components/Products';
 
-const Home = () => {
-  return (
-    <h2>Hello World</h2>
-   );
-}
+
+const Home = () => (
+  <>
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+    <Products />
+  </>
+);
+
 
 export default Home;
