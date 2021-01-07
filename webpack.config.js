@@ -13,6 +13,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  mode: 'development',
   // optimization: {
   //   splitChunks: {
   //     chunks: 'all',
