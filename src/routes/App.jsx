@@ -6,18 +6,27 @@ import Item from '../containers/Item';
 import CreateProduct from '../containers/CreateProduct';
 import Layout from '../components/Layout';
 
+import AppContext from '../context/AppContext';
+import useInitialState from '../Hooks/useInitialState';
+
 import '../assets/styles/mobile.css';
 
-const App = () => (
-  <BrowserRouter>
-    <Layout>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/add-product" component={CreateProduct} />
-        <Route exact path="/product/:id" component={Item} />
-      </Switch>
-    </Layout>
-  </BrowserRouter>
-);
+const App = () => {
+  const initialState = useInitialState();
+
+  return (
+    <AppContext.Provider value={initialState}>
+      <BrowserRouter>
+        <Layout>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/add-product" component={CreateProduct} />
+            <Route exact path="/product/:id" component={Item} />
+          </Switch>
+        </Layout>
+      </BrowserRouter>
+    </AppContext.Provider>
+  );
+};
 
 export default App;

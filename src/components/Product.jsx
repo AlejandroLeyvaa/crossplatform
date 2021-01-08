@@ -1,35 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import imageProduct from '../assets/3DS/video-game-console-2202582_640.jpg';
 
-const Product = () => {
-  let some = [];
+const Product = ({ product, addTo }) => {
   return (
-    <Link to="/product/id">
-      <div className="Products-items">
+    <div className="Products-items">
+      <Link to="/product/:id">
         <figure className="Products-items-figure">
           <picture>
-            <img src={imageProduct} alt="" />
+            <img src={product.product_url} alt={product.product_name} />
           </picture>
         </figure>
-        <div className="Products-item-info">
-          <h2 className="Prodcuts-info-title">
-            Product Name
-          </h2>
-          <h3 className="Prodcuts-info-price">
-            Price
-          </h3>
-          <div className="Prodcuts-info-rank">
-            <span>Stars</span>
-          </div>
-          <div className="Prodcuts-info-brand">
-            <span>Nintendo</span>
-            <button type="button">Buy</button>
-          </div>
+      </Link>
+      <div className="Products-item-info">
+        <h2 className="Prodcuts-info-title">
+          {product.product_name}
+        </h2>
+        <h3 className="Prodcuts-info-price">
+          {product.product_price}
+        </h3>
+        <div className="Prodcuts-info-brand">
+          <span>{product.product_brand}</span>
+          <button
+            type="button"
+            onClick={addTo(product)}>
+            Buy
+          </button>
         </div>
       </div>
-    </Link>
-    );
+    </div>
+  );
 };
-
 export default Product;

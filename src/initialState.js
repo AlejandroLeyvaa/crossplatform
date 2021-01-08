@@ -1,8 +1,9 @@
-import Product from './components/Product'
-
-export defautl {
-  Products: [
-    {
-    }
-  ]
+const initialState = {
+  user: {},
+  cart: [],
+  buyer: [],
+  orders: []
 };
+
+
+export default initialState;

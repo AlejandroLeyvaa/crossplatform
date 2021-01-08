@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Preview from './Preview';
 
 const Form = () => {
+  const isANumber = /[0-9]+/;
+
   const API = 'http://localhost:3001/api/products';
   const [form, setValues] = useState({});
   const [srcImage, setSrcImage] = useState([]);
@@ -12,7 +14,11 @@ const Form = () => {
       ...form,
       [e.target.name]: e.target.value,
     });
-    console.log(srcImage);
+
+    console.log(isANumber.test(form.product_price));
+    console.log(isANumber.source);
+    console.log(form);
+    console.log('[Product Price]', form.product_price);
   };
 
   const handleChange = (e) => {
@@ -34,15 +40,17 @@ const Form = () => {
     formData.append('product_price', form.product_price);
     formData.append('product_brand', form.product_brand);
     formData.append('product_url', form.product_url);
-
-    fetch(API, {
-      method: 'POST',
-      body: formData,
-    })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => console.log(err));
+    console.log(formData);
+    // fetch(API, {
+    //   method: 'POST',
+    //   body: formData,
+    // })
+    // .then((response) => {
+    //   console.log(response);
+    // })
+    // .catch((err) => console.log(err));
+    event.target.reset();
+    setSrcImage('');
   };
 
   return (
@@ -65,6 +73,7 @@ const Form = () => {
           name="product_price"
           onChange={handleInput}
           placeholder="Price"
+          pattern="[0-9]"
           required
         />
         <input
@@ -103,6 +112,5 @@ const Form = () => {
   );
 
 };
-
 
 export default Form;
