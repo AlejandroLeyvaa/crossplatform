@@ -7,12 +7,11 @@ const Header = () => {
   console.log('Cart', cart);
 
   return (
-    <header>
+    <header className="Header">
       <div>
         <p>Header</p>
         {cart.length > 0 &&
-        <h2>{cart.length}</h2>
-        }
+        <h2>{cart.length}</h2>}
       </div>
     </header>
   );

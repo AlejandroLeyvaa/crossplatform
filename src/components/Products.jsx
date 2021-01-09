@@ -22,13 +22,15 @@ const Products = () => {
 
   return (
     <>
-      {products.map((product) => (
-        <Product
-          key={product.product_id}
-          product={product}
-          addTo={handleAddToCart}
-        />
-      ))}
+      <div className="Products grid">
+        {products.map((product) => (
+          <Product
+            key={product.product_id}
+            product={product}
+            addTo={handleAddToCart}
+          />
+        ))}
+      </div>
     </>
   );
 

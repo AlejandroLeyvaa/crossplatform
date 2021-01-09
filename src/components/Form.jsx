@@ -41,14 +41,14 @@ const Form = () => {
     formData.append('product_brand', form.product_brand);
     formData.append('product_url', form.product_url);
     console.log(formData);
-    // fetch(API, {
-    //   method: 'POST',
-    //   body: formData,
-    // })
-    // .then((response) => {
-    //   console.log(response);
-    // })
-    // .catch((err) => console.log(err));
+    fetch(API, {
+      method: 'POST',
+      body: formData,
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => console.log(err));
     event.target.reset();
     setSrcImage('');
   };
@@ -73,7 +73,6 @@ const Form = () => {
           name="product_price"
           onChange={handleInput}
           placeholder="Price"
-          pattern="[0-9]"
           required
         />
         <input
