@@ -3,6 +3,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from '../containers/Home';
 import Checkout from '../containers/Checkout';
+import Information from '../containers/Information';
+import Payment from '../containers/Payment';
+import Success from '../containers/Success';
 import Item from '../containers/Item';
 import CreateProduct from '../containers/CreateProduct';
 import Layout from '../components/Layout';
@@ -22,6 +25,9 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/checkout/information" component={Information} />
+            <Route exact path="/checkout/payment" component={Payment} />
+            <Route exact path="/checkout/success" component={Success} />
             <Route exact path="/add-product" component={CreateProduct} />
             <Route exact path="/product/:id" component={Item} />
           </Switch>

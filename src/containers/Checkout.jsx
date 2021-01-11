@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { nanoid } from 'nanoid';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 
 const Checkout = () => {
-  const { state, removeFromCart } = useContext(AppContext);
+  const { state, removeFromCart, addTotal } = useContext(AppContext);
   const { cart } = state;
-  const id = nanoid();
+  const history = useHistory();
 
   const handleRemove = (product, index) => () => {
     removeFromCart(product, index);
@@ -20,24 +20,32 @@ const Checkout = () => {
     return sum;
   };
 
+  const handleClick = () => {
+    const total = handleSum();
+    addTotal(total);
+    history.push('/checkout/information');
+  };
+
   return (
     <>
       <div className="Checkout">
         <div className="Checkout-payment-info">
           {cart.length > 0 ? (
             <div>
-              <h2>
-                Subtotal:
-                {' '}
-                {handleSum()}
-              </h2>
+              <h2>Subtotal: {handleSum()}</h2>
               <div>
-                <button type="button" className="Checkout-payment-button">Proceed to checkout</button>
+                <button
+                  type="button"
+                  className="Checkout-payment-button"
+                  onClick={handleClick}
+                >
+                  Proceed to checkout
+                </button>
               </div>
             </div>
-        )
-
-          : <h3>Shopping Cart Empty</h3>}
+          ) : (
+            <h3>Shopping Cart Empty</h3>
+          )}
         </div>
         <div className="Checkout-items">
           {cart.length > 0 ? <h3>List</h3> : <h3>Add products</h3>}
