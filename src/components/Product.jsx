@@ -12,17 +12,11 @@ const Product = ({ product, addTo }) => {
         </figure>
       </Link>
       <div className="Products-item-info">
-        <h2 className="Prodcuts-info-title">
-          {product.product_name}
-        </h2>
-        <h3 className="Prodcuts-info-price">
-          {product.product_price}
-        </h3>
+        <h2 className="Prodcuts-info-title">{product.product_name}</h2>
+        <h3 className="Prodcuts-info-price">{product.product_price}</h3>
         <div className="Prodcuts-info-brand">
           <span>{product.product_brand}</span>
-          <button
-            type="button"
-            onClick={addTo(product)}>
+          <button type="button" onClick={addTo(product)}>
             Buy
           </button>
         </div>

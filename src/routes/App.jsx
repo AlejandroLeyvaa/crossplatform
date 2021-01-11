@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from '../containers/Home';
+import Checkout from '../containers/Checkout';
 import Item from '../containers/Item';
 import CreateProduct from '../containers/CreateProduct';
 import Layout from '../components/Layout';
@@ -20,6 +21,7 @@ const App = () => {
         <Layout>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/add-product" component={CreateProduct} />
             <Route exact path="/product/:id" component={Item} />
           </Switch>
