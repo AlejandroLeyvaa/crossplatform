@@ -5,6 +5,8 @@ import AppContext from '../context/AppContext';
 const SignUp = () => {
   const { addUser, state } = useContext(AppContext);
   const API = 'http://localhost:3001/api/users';
+  // const API = 'https://cross-platform.herokuapp.com/api/users/sign-up';
+
   const [form, setValues] = useState({});
   const [showPassword, setView] = useState(false);
   const [showAlert, setAlert] = useState(false);

@@ -5,7 +5,8 @@ import Product from './Product';
 const Products = () => {
   const { addToCart } = useContext(AppContext);
   const [products, setproducts] = useState([]);
-  const API = 'http://localhost:3001/api/products';
+  // const API = 'http://localhost:3001/api/products';
+  const API = 'https://cross-platform.herokuapp.com/api/products';
 
   const handleAddToCart = (product) => () => {
     addToCart(product);

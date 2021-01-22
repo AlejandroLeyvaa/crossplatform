@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Preview from './Preview';
 
 const Form = () => {
-  const API = 'http://localhost:3001/api/products';
+  // const API = 'http://localhost:3001/api/products';
+  const API = 'https://cross-platform.herokuapp.com/api/products'
   const [form, setValues] = useState({});
   const [srcImage, setSrcImage] = useState([]);
 
