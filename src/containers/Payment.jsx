@@ -8,7 +8,8 @@ const Payment = () => {
   const { state, addNewOrder } = useContext(AppContext);
   const history = useHistory();
   const { cart, buyer } = state;
-  const clientId = 'AQ8B-If181D1_U1RiXsgbBOm62tcFRItQ__I_lSfywjIsvBt30q08ZCKjyyCK9oDGTacM_wMLniJHeyD';
+  const clientId =
+    'AQ8B-If181D1_U1RiXsgbBOm62tcFRItQ__I_lSfywjIsvBt30q08ZCKjyyCK9oDGTacM_wMLniJHeyD';
 
   const paypalOptions = {
     clientId,
@@ -21,8 +22,6 @@ const Payment = () => {
   };
 
   const handlePaymentSuccess = (data) => {
-    console.log(['Payment Data'], data);
-
     if (data.status === 'COMPLETED') {
       const newOrder = {
         buyer,
@@ -33,20 +32,64 @@ const Payment = () => {
       history.push('/checkout/success');
     }
   };
-
+  console.log(['Buyer'], buyer);
   return (
-    <div className="Payment">
+    <div className="Payment CurrentRoute">
       <div className="Payment-content">
-        <h3>Resumen del pedido:</h3>
+        <h2>Sale Summary</h2>
         {cart.map((item) => (
           <div className="Payment-item" key={nanoid()}>
-            <div className="Payment-element">
-              <h4>{item.product_title}</h4>
-              <span>Total $ {item.product_price}</span>
+            <div className="Payment-item-content">
+              <div className="Payment-item-data">
+                <h2>Product data</h2>
+                <h4>{item.product_name}</h4>
+                <h4>{item.product_price}</h4>
+                <h4>{item.product_brand}</h4>
+              </div>
+              <figure className="Payment-item-figure">
+                <img src={item.product_url} alt={item.product_title} />
+              </figure>
             </div>
           </div>
         ))}
-        <span>$ {state.total}</span>
+        {state.total && (
+          <div className="Payment-item">
+            <h2>
+              {'$'}
+              {state.total}
+            </h2>
+          </div>
+        )}
+        <div className="Payment-user-data">
+          <h2>User data</h2>
+          <div className="Payment-user-info">
+            <h3>{buyer.name}</h3>
+          </div>
+          <div className="Payment-user-info">
+            <h3>{buyer.lastname}</h3>
+          </div>
+          <div className="Payment-user-info">
+            <h3>{buyer.email}</h3>
+          </div>
+          <div className="Payment-user-info">
+            <h3>{buyer.country}</h3>
+          </div>
+          <div className="Payment-user-info">
+            <h3>{buyer.state}</h3>
+          </div>
+          <div className="Payment-user-info">
+            <h3>{buyer.city}</h3>
+          </div>
+          <div className="Payment-user-info">
+            <h3>{buyer.address}</h3>
+          </div>
+          <div className="Payment-user-info">
+            <h3>{buyer.cp}</h3>
+          </div>
+          <div className="Payment-user-info">
+            <h3>{buyer.phone}</h3>
+          </div>
+        </div>
         <div className="Payment-button">
           <PayPalButton
             paypalOptions={paypalOptions}
@@ -59,7 +102,6 @@ const Payment = () => {
           />
         </div>
       </div>
-      <div />
     </div>
   );
 };

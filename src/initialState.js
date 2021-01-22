@@ -1,7 +1,7 @@
 const initialState = {
   user: {},
   cart: [],
-  buyer: [],
+  buyer: {},
   orders: [],
   total: null,
 };

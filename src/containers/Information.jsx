@@ -7,15 +7,14 @@ const Information = () => {
   const { state, addToBuyer } = useContext(AppContext);
   const form = useRef(null);
   const history = useHistory();
-  const { cart } = state;
 
   const handleSubmit = () => {
     const formData = new FormData(form.current);
     const buyer = {
       name: formData.get('name'),
+      lastname: formData.get('lastname'),
       email: formData.get('email'),
       address: formData.get('address'),
-      apto: formData.get('apto'),
       city: formData.get('city'),
       country: formData.get('country'),
       state: formData.get('state'),
@@ -27,49 +26,106 @@ const Information = () => {
   };
 
   return (
-    <div className="Information">
+    <div className="Information CurrentRoute">
       <div className="Information-content">
         <div className="Information-title">
-          <h2>Información de contacto:</h2>
+          <h2>Contact</h2>
         </div>
         <div className="Information-form">
-          <form ref={form}>
-            <input type="text" placeholder="Nombre completo" name="name" />
-            <input type="text" placeholder="Correo Electronico" name="email" />
-            <input type="text" placeholder="Direccion" name="address" />
-            <input type="text" placeholder="apto" name="apto" />
-            <input type="text" placeholder="Pais" name="country" />
-            <input type="text" placeholder="Ciudad" name="city" />
-            <input type="text" placeholder="Estado" name="state" />
-            <input type="text" placeholder="Codigo postal" name="cp" />
-            <input type="text" placeholder="Telefono" name="phone" />
+          <form className="Form" ref={form}>
+            <label htmlFor="name">
+              <span aria-label="First Name">First Name</span>
+              <input
+                className="Form-input"
+                type="text"
+                placeholder="Alejandro"
+                name="name"
+              />
+            </label>
+            <label htmlFor="lastname">
+              <span aria-label="Last Name">Last Name</span>
+              <input
+                className="Form-input"
+                type="text"
+                placeholder="Leyva"
+                name="lastname"
+              />
+            </label>
+            <label htmlFor="email">
+              <span aria-label="e-mail">e-mail</span>
+              <input
+                className="Form-input"
+                type="text"
+                placeholder="random-email@gmail.com"
+                name="email"
+              />
+            </label>
+            <label htmlFor="country">
+              <span aria-label="Country">Country</span>
+              <input
+                className="Form-input"
+                type="text"
+                placeholder="México"
+                name="country"
+              />
+            </label>
+            <label htmlFor="country">
+              <span aria-label="State">State</span>
+              <input
+                className="Form-input"
+                type="text"
+                placeholder="Sinaloa"
+                name="state"
+              />
+            </label>
+            <label htmlFor="city">
+              <span aria-label="City">City</span>
+              <input
+                className="Form-input"
+                type="text"
+                placeholder="Culiacán"
+                name="city"
+              />
+            </label>
+            <label htmlFor="address">
+              <span aria-label="Address">Address</span>
+              <input
+                className="Form-input"
+                type="text"
+                placeholder="Random"
+                name="address"
+              />
+            </label>
+            <label htmlFor="cp">
+              <span aria-label="Postal Code">Postal Code</span>
+              <input
+                className="Form-input"
+                type="text"
+                placeholder="80000"
+                name="cp"
+              />
+            </label>
+            <label htmlFor="phone">
+              <span aria-label="Phone Number">Phone Number</span>
+              <input
+                className="Form-input"
+                type="text"
+                placeholder="667"
+                name="phone"
+              />
+            </label>
           </form>
         </div>
         <div className="Information-buttons">
-          <div className="Information-return">
-            <Link to="/checkout">Regresar</Link>
-          </div>
-          {/* Payment */}
-          <div className="Information-next">
-            <button type="button" onClick={handleSubmit}>
-              Pay
+          <Link to="/checkout">
+            <button type="button" className="short button remove">
+              Return
             </button>
-          </div>
+          </Link>
+          <button className="short button" type="button" onClick={handleSubmit}>
+            Pay
+          </button>
         </div>
-      </div>
-      <div className="Information-sidebar">
-        <h3>Pedido:</h3>
-        {cart.map((item) => (
-          <div className="Information-item" key={nanoid()}>
-            <div className="Information-element">
-              <h4>{item.product_title}</h4>
-              <span>
-                $
-                {item.product_price}
-              </span>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   );

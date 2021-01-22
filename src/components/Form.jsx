@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Preview from './Preview';
 
 const Form = () => {
-  const isANumber = /[0-9]+/;
-
   const API = 'http://localhost:3001/api/products';
   const [form, setValues] = useState({});
   const [srcImage, setSrcImage] = useState([]);
@@ -14,11 +12,6 @@ const Form = () => {
       ...form,
       [e.target.name]: e.target.value,
     });
-
-    console.log(isANumber.test(form.product_price));
-    console.log(isANumber.source);
-    console.log(form);
-    console.log('[Product Price]', form.product_price);
   };
 
   const handleChange = (e) => {
@@ -29,7 +22,7 @@ const Form = () => {
     setValues({
       ...form,
       [e.target.name]: getImage,
-    })
+    });
     setSrcImage(src);
   };
 
@@ -45,71 +38,72 @@ const Form = () => {
       method: 'POST',
       body: formData,
     })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => console.log(err));
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
     event.target.reset();
     setSrcImage('');
   };
 
   return (
     <>
-      <form
-        className="Form"
-        onSubmit={handleSubmit}
-      >
-        <input
-          className="Form-input"
-          type="text"
-          name="product_name"
-          onChange={handleInput}
-          placeholder="Product name"
-          required
-        />
-        <input
-          className="Form-input"
-          type="text"
-          name="product_price"
-          onChange={handleInput}
-          placeholder="Price"
-          required
-        />
-        <input
-          className="Form-input"
-          type="text"
-          name="product_brand"
-          onChange={handleInput}
-          placeholder="Company"
-          required
-        />
-        <div className="Form-buttons-container">
-          <div className="Form-file-inputContainer">
-            <input
-              className="Form-input-file"
-              type="file"
-              name="product_url"
-              multiple
-              accept="image/*"
-              onChange={handleChange}
-              required
-            />
+      <div className="Add-product CurrentRoute">
+        <form className="Form" onSubmit={handleSubmit}>
+          <input
+            className="Form-input"
+            type="text"
+            name="product_name"
+            onChange={handleInput}
+            placeholder="Product name"
+            required
+          />
+          <input
+            className="Form-input"
+            type="text"
+            name="product_price"
+            onChange={handleInput}
+            placeholder="Price"
+            required
+          />
+          <input
+            className="Form-input"
+            type="text"
+            name="product_brand"
+            onChange={handleInput}
+            placeholder="Company"
+            required
+          />
+          <div className="Form-buttons-container">
+            <div className="Form-file-inputContainer">
+              <input
+                className="Form-input-file"
+                type="file"
+                name="product_url"
+                multiple
+                accept="image/*"
+                onChange={handleChange}
+                required
+              />
+              <i class="fas fa-image" />
+            </div>
+            <button type="submit" className="Form-input-submit">
+              Send
+            </button>
           </div>
-          <button type="submit" className="Form-input-submit">Send</button>
-        </div>
-      </form>
-      {srcImage.length > 0 && (
-      <Preview
-        src={srcImage}
-        alt={form.product_name}
-        name={form.product_name}
-        price={form.product_price}
-        brand={form.product_brand}
-      />
-      )}
+        </form>
+        {srcImage.length > 0 && (
+          <Preview
+            src={srcImage}
+            alt={form.product_name}
+            name={form.product_name}
+            price={form.product_price}
+            brand={form.product_brand}
+          />
+        )}
+      </div>
     </>
   );
-
 };
 
 export default Form;

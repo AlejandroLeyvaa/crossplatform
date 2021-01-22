@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { nanoid } from 'nanoid';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 
 const Checkout = () => {
@@ -15,7 +15,6 @@ const Checkout = () => {
   const handleSum = () => {
     const reducer = (accumulator, currentValue) =>
       accumulator + currentValue.product_price;
-
     const sum = cart.reduce(reducer, 0);
     return sum;
   };
@@ -28,15 +27,15 @@ const Checkout = () => {
 
   return (
     <>
-      <div className="Checkout">
+      <div className="Checkout CurrentRoute">
         <div className="Checkout-payment-info">
           {cart.length > 0 ? (
-            <div>
+            <div className="Checkout-payment-void">
               <h2>Subtotal: {handleSum()}</h2>
               <div>
                 <button
                   type="button"
-                  className="Checkout-payment-button"
+                  className="long button"
                   onClick={handleClick}
                 >
                   Proceed to checkout
@@ -48,7 +47,17 @@ const Checkout = () => {
           )}
         </div>
         <div className="Checkout-items">
-          {cart.length > 0 ? <h3>List</h3> : <h3>Add products</h3>}
+          {cart.length > 0 ? (
+            <h3>Products added:</h3>
+          ) : (
+            <section>
+              <div className="Checkout-payment-info">
+                <Link to="/">
+                  <button type="button" className="long button">Go to Add products!</button>
+                </Link>
+              </div>
+            </section>
+          )}
           {cart.map((item, index) => (
             <div key={nanoid()} className="Checkout-item-container">
               <div className="Checkout-item-content">
@@ -62,7 +71,11 @@ const Checkout = () => {
                 </div>
               </div>
               <div>
-                <button type="button" onClick={handleRemove(item, index)}>
+                <button
+                  className="button remove"
+                  type="button"
+                  onClick={handleRemove(item, index)}
+                >
                   Remove
                 </button>
               </div>

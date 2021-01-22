@@ -19,7 +19,7 @@ const Products = () => {
 
   return (
     <>
-      <div className="Products grid">
+      <div className="Products CurrentRoute grid">
         {products.map((product) => (
           <Product
             key={product.product_id}

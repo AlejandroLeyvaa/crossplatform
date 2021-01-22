@@ -16,7 +16,7 @@ const Product = ({ product, addTo }) => {
         <h3 className="Prodcuts-info-price">{product.product_price}</h3>
         <div className="Prodcuts-info-brand">
           <span>{product.product_brand}</span>
-          <button type="button" onClick={addTo(product)}>
+          <button type="button" className="short button" onClick={addTo(product)}>
             Buy
           </button>
         </div>

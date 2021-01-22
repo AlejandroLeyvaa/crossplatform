@@ -5,6 +5,13 @@ import initialState from '../initialState';
 const useInitialState = () => {
   const [state, setState] = useState(initialState);
 
+  const addUser = (payload) => {
+    setState({
+      ...state,
+      user: Object.assign(state.user, payload)
+    });
+  };
+
   const getProducts = (payload) => {
     setState({
       ...state,
@@ -29,7 +36,7 @@ const useInitialState = () => {
   const addToBuyer = (payload) => {
     setState({
       ...state,
-      buyer: [...state.buyer, payload]
+      buyer: Object.assign(state.buyer, payload)
     });
   };
 
@@ -48,6 +55,7 @@ const useInitialState = () => {
   };
 
   return {
+    addUser,
     getProducts,
     addToCart,
     removeFromCart,
