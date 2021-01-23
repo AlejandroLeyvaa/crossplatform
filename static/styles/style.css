@@ -1,0 +1,537 @@
+:root {
+  --columns: 4;
+  --gap: 1.6rem;
+  --dark-primary-color: #d32f2f;
+  --default-primary-color: #f44336;
+  --light-primary-color: #ffcdd2;
+  --text-primary-color: #ffffff;
+  --accent-color: #ffc107;
+  --primary-text-color: #212121;
+  --secondary-text-color: #757575;
+  --divider-color: #bdbdbd;
+}
+
+a,
+body,
+div,
+ul,
+li,
+section,
+main,
+header,
+menu,
+nav,
+footer,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+form,
+input,
+figure,
+image,
+picture {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--text-primary-color);
+  text-decoration: none;
+}
+
+body {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+  font-size: 62.5%;
+  color: var(--primary-text-color);
+  font-family: 'Open Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+i {
+  color: var(--text-primary-color);
+  font-size: 1.8rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+.CurrentRoute {
+  min-height: 100vh;
+  max-height: 100%;
+  grid-column: span 4;
+}
+
+.eye {
+  border-top: 1px solid var(--divider-color);
+  border-right: 1px solid var(--divider-color);
+  border-bottom: 1px solid var(--divider-color);
+  width: 10%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.8rem 0;
+}
+
+.eye i {
+  font-size: 1rem;
+  color: black;
+}
+
+.eye:hover {
+  background-color: var(--divider-color);
+}
+
+.grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  grid-column-gap: var(--gap);
+  grid-row-gap: var(--gap);
+}
+
+.long {
+  width: 100%;
+}
+
+.short {
+  width: 64px;
+}
+
+.button {
+  background: var(--accent-color);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  height: 32px;
+  color: var(--primary-text-color);
+  margin: 1.6rem 0;
+}
+
+.remove {
+  background: var(--dark-primary-color);
+  color: var(--text-primary-color);
+}
+
+.Header {
+  background-color: var(--default-primary-color);
+  width: 100%;
+  min-width: 320px;
+  height: 50px;
+  display: flex;
+  margin: 0 0 1.6rem 0;
+  position: fixed;
+  top: 0;
+  z-index: 900;
+}
+
+.Header-logo,
+.Header-nav,
+.Header-nav a {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1.6rem;
+}
+
+.Header-logo a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header-nav {
+  justify-content: flex-end;
+}
+
+.Header-nav a {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.Header-nav a i {
+  margin: 0.8rem;
+}
+
+.Header-cart-container:hover i {
+  color: var(--primary-text-color);
+}
+
+.Header-user-container:hover i {
+  color: var(--primary-text-color);
+}
+
+.Header-logo-container {
+  width: 32px;
+  height: 32px;
+  margin-right: 0.8rem;
+}
+
+.Header-logo h2 {
+  font-size: 1.8rem;
+  margin-left: 0.8rem;
+}
+
+.Header-user-options {
+  background: var(--dark-primary-color);
+  list-style: none;
+  width: 100vw;
+  height: 100vh;
+  padding: 1.6rem;
+  display: none;
+  position: absolute;
+  top: 5rem;
+  right: 0;
+}
+
+.Header-user-options li {
+  box-shadow: 0 0 1rem 1px rgba(0, 0, 0, 0.3);
+  font-size: 1.6rem;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.6rem 0;
+}
+
+.Header-user-options li:hover {
+  background-color: var(--default-primary-color);
+  box-shadow: 0 0 1rem 1px rgba(255, 255, 255, 0.1);
+}
+
+.Main {
+  width: 100%;
+  margin: 6.6rem 0;
+}
+
+.Products {
+  width: 100%;
+  height: 100%;
+  grid-column: span 4;
+}
+
+.Products-items {
+  width: 100%;
+  min-width: 160px;
+  height: 100%;
+  margin: 1.6rem 0;
+  grid-column: span 2;
+}
+
+.Products-items-figure {
+  width: 100%;
+  height: 50%;
+}
+
+.Products-items-figure picture {
+  width: inherit;
+  height: inherit;
+}
+
+.Products-items-figure img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+
+.Products-item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1.6rem;
+}
+
+.Prodcuts-info-title {
+  height: 80px;
+}
+
+.Prodcuts-info-brand {
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+}
+
+.Checkout-payment-info {
+  height: 100px;
+  padding: 0 1.6rem;
+}
+
+.Checkout-payment-void {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Checkout-payment-button {
+  background-color: var(--accent-color);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 30px;
+  margin: 1.6rem 0;
+}
+
+.Checkout-items {
+  min-height: 100px;
+  max-height: 100%;
+}
+
+.Checkout-items h3 {
+  padding: 0 1.6rem;
+}
+
+.Checkout-item-container {
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  padding: 1.6rem;
+}
+
+.Checkout-item-content {
+  width: inherit;
+  display: flex;
+}
+
+.Checkout-item-figure {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.Checkout-item-figure img {
+  width: 100%;
+}
+
+.Checkout-item-info {
+  width: 70%;
+}
+
+.Information {
+  padding: 0 1.6rem;
+}
+
+.Information-form {
+  display: flex;
+  justify-content: center;
+}
+
+.Information-form label {
+  width: 100%;
+}
+
+.Information-form label span {
+  font-size: 1.6rem;
+  margin: 0.8rem 0;
+  display: inline-block;
+}
+
+.Information-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.6rem;
+}
+
+.Form,
+.Add-product {
+  width: 100%;
+  min-width: 320px;
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 1.6rem;
+}
+
+.Payment {
+  padding: 0 1.6rem;
+}
+
+.Payment-item-content {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 1.6rem;
+}
+
+.Payment-item-data {
+  width: 50%;
+}
+
+.Payment-item-figure {
+  width: 256px;
+  height: auto;
+}
+
+.Payment-user-data {
+  background-color: var(--default-primary-color);
+  margin: 2.4rem 0;
+  box-shadow: 0px 1px 1rem 0 rgba(0, 0, 0, 0.9);
+  padding: 1.6rem;
+}
+
+.Payment-user-info {
+  background-color: transparent;
+}
+
+.Payment-button {
+  width: 100%;
+  padding: 0 1.6rem;
+}
+.Item {
+  width: 100%;
+  min-width: 160px;
+  height: 100%;
+  margin: 1.6rem 0;
+  grid-column: span 4;
+}
+
+.Item-figure {
+  height: 50%;
+}
+
+.Item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1.6rem;
+}
+
+.Item-title {
+  height: 80px;
+}
+
+.Item-brand {
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+}
+
+.Form-input {
+  border: 1px solid var(--divider-color);
+  width: 100%;
+  height: 32px;
+  margin: 0.8rem 0;
+  padding: 0 1.6rem;
+}
+
+.Form-input[type='text'] {
+  color: var(--dark-primary-color);
+}
+
+::placeholder {
+  color: var(--default-primary-color);
+  margin: 0 1.6rem;
+}
+
+.Form-buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 1.6rem 0;
+}
+
+.Form-file-inputContainer {
+  background-color: var(--accent-color);
+  width: 64px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Form-input-submit {
+  background: #f0f0f0;
+  border: none;
+  width: 64px;
+  height: 32px;
+}
+
+.Form-input-file {
+  opacity: 0;
+  position: absolute;
+  width: 64px;
+  height: 32px;
+}
+
+.Form-password-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.Form-password-container input {
+  border-right: none;
+}
+.Add-product img {
+  width: 100%;
+}
+
+.Footer {
+  background-color: var(--default-primary-color);
+  width: 100%;
+  min-width: 320px;
+  height: 250px;
+  margin: 3.6rem 0 0 0;
+  padding: 1.6rem;
+}
+
+@media screen and (min-width: 768px) {
+  a {
+    color: var(--text-primary-color);
+    text-decoration: none;
+    width: 100%;
+    margin: 0 0.8rem 0 0;
+  }
+
+  .Header-logo a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .Prodcuts-info-brand {
+    border-bottom: 2px solid black;
+    display: block;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+  }
+
+  .Checkout-item-content {
+    width: inherit;
+    display: block
+  }
+
+  .button {
+    background: var(--accent-color);
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 2px;
+    height: 32px;
+    color: var(--primary-text-color);
+    margin: 1.6rem 0;
+    width: 100%;
+  }
+
+  .Payment-figure {
+    width: 256px;
+    height: 256px;
+  }
+
+  .remove {
+    background: var(--dark-primary-color);
+    color: var(--text-primary-color);
+  }
+}
