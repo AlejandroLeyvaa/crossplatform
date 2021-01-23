@@ -1,7 +1,7 @@
 {
-  "name": "store",
+  "name": "crossplatform",
   "version": "1.0.0",
-  "description": "",
+  "description": "Store about videogames consoles",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve",
@@ -9,7 +9,7 @@
     "format": "prettier --write '{*.jsx,src/**/*.{js,jsx}}'",
     "lint": "eslint src/ --fix"
   },
-  "author": "",
+  "author": "Alejandro Leyva a.leyvaa95@gmail.com",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
