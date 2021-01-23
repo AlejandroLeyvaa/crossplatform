@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Product = ({ product, addTo }) => {
+const Product = ({ product, addTo, setItem }) => {
   return (
     <div className="Products-items">
-      <Link to="/product/:id">
+      <Link onClick={setItem(product)} to={`/product/${product.product_id}`}>
         <figure className="Products-items-figure">
           <picture>
             <img src={product.product_url} alt={product.product_name} />
@@ -16,7 +16,11 @@ const Product = ({ product, addTo }) => {
         <h3 className="Prodcuts-info-price">{product.product_price}</h3>
         <div className="Prodcuts-info-brand">
           <span>{product.product_brand}</span>
-          <button type="button" className="short button" onClick={addTo(product)}>
+          <button
+            type="button"
+            className="short button"
+            onClick={addTo(product)}
+          >
             Buy
           </button>
         </div>

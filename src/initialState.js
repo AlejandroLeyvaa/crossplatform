@@ -3,6 +3,7 @@ const initialState = {
   cart: [],
   buyer: {},
   orders: [],
+  currentProduct: {},
   total: null,
 };
 

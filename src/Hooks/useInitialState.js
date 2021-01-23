@@ -54,6 +54,13 @@ const useInitialState = () => {
     })
   };
 
+  const setProductInRoute = (payload) => {
+    setState({
+      ...state,
+      currentProduct: Object.assign(state.currentProduct, payload)
+    });
+  }
+
   return {
     addUser,
     getProducts,
@@ -62,6 +69,7 @@ const useInitialState = () => {
     addToBuyer,
     addNewOrder,
     addTotal,
+    setProductInRoute,
     state,
   }
 };
