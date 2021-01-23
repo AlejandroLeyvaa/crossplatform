@@ -15,8 +15,7 @@ import Layout from '../components/Layout';
 import AppContext from '../context/AppContext';
 import useInitialState from '../Hooks/useInitialState';
 
-import '../assets/styles/mobile.css';
-import '../assets/styles/tablet.css';
+import '../assets/styles/style.css';
 
 const App = () => {
   const initialState = useInitialState();

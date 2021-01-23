@@ -1,19 +1,14 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 
-const Item = (props) => {
+const Item = () => {
   const { state, addToCart } = useContext(AppContext);
   const { currentProduct } = state;
-  const { id } = props.match.params;
 
   const handleAddToCart = () => {
     addToCart(currentProduct);
-    console.log(currentProduct, state);
   };
 
-  console.log(id === currentProduct.product_id);
-
-  console.log('[Props]', state);
   return (
     <div className="Item CurrentRoute">
       <figure className="Items-figure">
