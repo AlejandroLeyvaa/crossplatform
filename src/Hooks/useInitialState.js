@@ -13,6 +13,7 @@ const useInitialState = () => {
   };
 
   const getProducts = (payload) => {
+    console.log(payload)
     setState({
       ...state,
       products: [...state.products, payload],
