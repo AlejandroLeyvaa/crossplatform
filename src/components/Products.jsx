@@ -2,43 +2,57 @@ import React, { useState, useEffect, useContext } from 'react';
 import AppContext from '../context/AppContext';
 import Product from './Product';
 
-const Products = () => {
-  const { addToCart, setProductInRoute } = useContext(AppContext);
-  const [products, setproducts] = useState([]);
-  // const API = 'http://localhost:3001/api/products';
-  const API = 'https://cross-platform.herokuapp.com/api/products';
+class Products extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+    };
+    this.API = 'https://cross-platform.herokuapp.com/api/products';
+    console.log('State', this.state);
+  }
 
-  const handleAddToCart = (product) => () => {
-    addToCart(product);
-  };
+  // handleAddToCart(product) => () => {
+  //   // addToCart(product);
 
-  const handleProductToRoute = (product) => () => {
-    setProductInRoute(product);
-  };
+  //   console.log(1);
+  // };
 
+  // handleProductToRoute(product) {
+  //   // return () => {
+  //   //   setProductInRoute(product);
+  //   // };
+  //   console.log(2);
+  // }
 
-  useEffect(() => {
-    fetch(API)
+  componentDidMount() {
+    fetch(this.API)
       .then((response) => response.json())
       .then((getData) => {
-        setproducts(getData.data);
-      });
-  }, []);
+        const { data } = getData;
+        console.log(data);
+        this.setState({ products: data });
+      })
+      .catch((err) => console.log(err));
+  }
 
-  return (
-    <>
-      <div className="Products CurrentRoute grid">
-        {products.map((product) => (
-          <Product
-            key={product.product_id}
-            product={product}
-            addTo={handleAddToCart}
-            setItem={handleProductToRoute}
-          />
-        ))}
-      </div>
-    </>
-  );
-};
+  render() {
+    const { products } = this.state;
+    return (
+      <>
+        <div className="Products CurrentRoute grid">
+          {products.map((product) => (
+            <Product
+              key={product.product_id}
+              product={product}
+              // addTo={this.handleAddToCart}
+              // setItem={this.handleProductToRoute}
+            />
+          ))}
+        </div>
+      </>
+    );
+  }
+}
 
 export default Products;

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Preview from './Preview';
 
 const Form = () => {
-  // const API = 'http://localhost:3001/api/products';
-  const API = 'https://cross-platform.herokuapp.com/api/products'
+  const API = 'http://localhost:3000/api/products';
+  // const API = 'https://cross-platform.herokuapp.com/api/products'
   const [form, setValues] = useState({});
   const [srcImage, setSrcImage] = useState([]);
 
@@ -86,7 +86,7 @@ const Form = () => {
                 onChange={handleChange}
                 required
               />
-              <i class="fas fa-image" />
+              <i className="fas fa-image" />
             </div>
             <button type="submit" className="Form-input-submit">
               Send

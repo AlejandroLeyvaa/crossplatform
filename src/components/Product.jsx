@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Product = ({ product, addTo, setItem }) => (
   <div className="Products-items">
-    <Link onClick={setItem(product)} to={`/product/${product.product_id}`}>
+    <Link
+    // onClick={setItem(product)}
+    to={`/product/${product.product_id}`}>
       <figure className="Products-items-figure">
         <picture>
           <img src={product.product_url} alt={product.product_name} />
@@ -18,7 +20,7 @@ const Product = ({ product, addTo, setItem }) => (
         <button
           type="button"
           className="short button"
-          onClick={addTo(product)}
+          // onClick={addTo(product)}
         >
           Buy
         </button>
